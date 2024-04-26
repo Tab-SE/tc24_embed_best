@@ -1,0 +1,518 @@
+# Embed with the Best!
+
+![embed with the best!](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/home.png)
+
+Welcome to your lab environment.
+
+>[!alert] To log into your VM, you will need to use the following credentials:
+
+**Username**: +++**@lab.VirtualMachine(Win11-TC24).Username**+++
+
+**Password**: +++**@lab.VirtualMachine(Win11-TC24).Password**+++
+
+>[!help] Let us know if you need assistance with setting up your lab. The **Room Assistants** around the room are always happy to help!
+
+>[!alert] :bulb: **Knowledge check** :bulb:   
+**You should be familiar with:**    
+- JavaScript    
+- Web Components    
+- HTML    
+- Try-Catch blocks    
+
+
+>[+hint] What is Javascript?
+> 
+> JavaScript is a versatile programming language primarily used for adding interactivity to web pages. It enables developers to create dynamic content, handle user input, and interact with web APIs, making it essential for modern web development.
+
+>[+hint] What is a `<tableau-viz/>` web component? 
+> 
+> A web component is a set of web platform APIs that allow developers to create reusable custom HTML elements. These elements encapsulate functionality and styling, making it easier to build complex web applications with modular and maintainable code.     
+> **The tableau-viz web component** is the simplest way to embed a view into a page and to initialize the Embedding API.  
+> The **basic structure** of the <tableau-viz> web component is as follows:
+```<tableau-viz id="tableauViz"       
+  src='https://my-server/views/my-workbook/my-view'>
+</tableau-viz>```
+> knowledge[Read more about the tableau-viz web component here](https://help.tableau.com/current/api/embedding_api/en-us/docs/embedding_api_basic.html)
+
+
+>[+hint] What is HTML? 
+> 
+>HTML, or Hypertext Markup Language, is the standard language for creating web pages and applications. It uses tags to structure content and define elements such as headings, paragraphs, images, and links.
+
+>[+hint] What is a try-catch block? 
+> 
+> A try-catch block is like a safety net in programming that helps catch errors that might occur while running a piece of code. The "try" part contains the code that might cause an error, and the "catch" part specifies what should happen if an error occurs, allowing the program to gracefully handle unexpected issues without crashing.
+
+===
+
+# **Getting Started**
+
+![Introduction setup](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/getting_started.png)
+
+---
+###**Steps to get started:**
+
+1. Click the **Tableau Embedding Playground** icon on the desktop of your virtual machine to open up the playground.   
+>[!knowledge] :information_source: URL for future reference: [Tableau Embedding Playground](https://developer.salesforce.com/tools/tableau/embedding-playground).
+
+
+2. On the landing page, select the option on the left called "Quick start" and then "Get Started"
+
+![Quick Start Option](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/Setup.png)
+
+3. On the next screen we see the Embedding Playground with a sample vizualization 
+4. On the left hand side of the screen we see Embed Details, Customize Display, Add Interactions, and Connected Apps. We are going to go through each of these sections throughout this course.
+5. On the right hand side of the screen we have the viz on top. Below the Viz we have a Javascipt pane, an HTML pane, and the Console which is initially collapsed.
+![Beginning Page](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/beginningpage.png)
+6. Click on Console to expand it and see that we have already logged "Viz is interactive". 
+![Console Log](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/consolefirstinteractive.png)
+7. Collapse the console to see the Javascript side pane again. Within the Javascript we see that an event listener had been pre-configured with the "First Interactive" method. Upon loading of the viz, we console logged "Viz is interactive".
+![Javascript](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/firstinteractivejavascript.png)
+8. When we make changes to the code we will need to push the "Run" button to see the changes made to the worksheet and print to the console.
+![Run Button](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/runbutton.png)
+9. If at any time you need to start from the beginning, click the arrow to the right of the "Run" buttonand click "Reset Code"
+![Reset Button](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/resetbutton.png)
+
+===
+
+# **Part I: Customizing the Embed**
+
+![part 1](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/part_1.png)
+
+###:dart: **Key objectives for customizing the `<tableau-viz/>` web component:**
+1. Width & Height 
+2. Toolbar Location
+#Width and Height
+#### We can change the width and height of the view with the width and height properties
+
+###**Steps to change the width and height:**
+  1. Within the Embed Details section change the width to `600px` and the height to `370px`
+  2. Click the "Run" button to see the worksheet change
+
+>[+hint] Expected Results
+> 
+  Notice the width and height properties now within the web component and the view has changed sizes
+> ![Width and Height](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/widthandheightsteps.png)
+
+#Toolbar Location
+
+#### We can move the toolbar to the top or bottom of the dashboard or we can hide it all together.
+
+###**Steps to move the toolbar:**
+  1. Expand the section called "Customize Display"
+  2. Click the dropdown to see the option
+  3. Select "Top" 
+  4. Click the "Run" button to see the toolbar move to the top of the dashboard
+
+>[+hint] Expected Results
+> 
+  Notice the toolbar property within the web component has updated based on your selection
+> ![Toolbar Location](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/toolbarlocationsteps.png)
+
+#:zap: Extra Challenge :zap:
+
+####Have you already made it through the first two challenges? See if you can complete this one on your own.
+>[!help] **Challenge: Change the layout to Mobile Device**
+
+>[+hint] **Expand for the solution**
+> 
+If you have created dashboard layouts, set the "Viewing Device" to preview a specific device type. "Default" will automatically set the view for you based on the width and height of the preview window.
+###**Steps to change the 'Viewing Device':**
+  1. Click the dropdown to see the option
+  2. Select "Phone" 
+  3. Click the "Run" button to see the layout change and the property "device" change to "phone"
+> ![Toolbar Location](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/devicetypeanswer.png)
+
+
+===
+
+# **Part II: Interactions**
+![PArt 2 Interactions](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/part2.png)
+
+## :dart: **Key objectives for Interactions:**
+###[Filter Interactions](#get-filters "filters")
+######[Extra Challenges](#zap-extra-challenges-zap "extra challenges")
+===
+# **Get Filters**
+[ :arrow_upper_left: Go back to Part II Key Objectives](#part-ii-interactions "marks")
+![Get Filters](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/get_filters.png)
+
+#### Imagine a scenario where we want to allow end users to filter data, we would want to first get the list of filters applied to a worksheet
+
+### **Steps to get list of filters:**
+1. Expand sections "Worksheet" and "Filters
+2. At the bottom of the list drag and drop "Get list of filters" to the Javascript
+```
+try {
+  // getFiltersAsync (Dashboard)
+
+  // For more information, see
+  // https://help.tableau.com/current/api/embedding_api/en-us/docs/embedding_api_filter.html
+
+  const dashFilters = await dashboard.getFiltersAsync();
+  console.log('Available dashboard filters:');
+  console.log(dashFilters);
+
+  // show # and names of categorical filters in the Console
+  const categoricalFilters = dashFilters.filter((df) => df.filterType === FilterType.Categorical);
+  console.log(categoricalFilters);
+
+  console.log(`The number of categorical filters: ${categoricalFilters.length}
+  Filters: ${categoricalFilters.map((s) => s.fieldName)}`);
+} catch (e) {
+  console.error(e.toString());
+}
+```
+3. Click "run"
+![Get Filters Steps](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/getfilterssteps.png)
+4. Expand the Console and make sure you are getting 4 filter field names: Country, Order Date, Region, and State
+![Get Filters Steps](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/getfiltersconsole.png)
+
+
+===
+#**Apply Filter and Extra Challenges**
+[ :arrow_upper_left: Go back to Part II Key Objectives](#part-ii-interactions "marks")
+![apply filter](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/apply_filter.png)
+
+#### Now that we know which filters are applied to this worksheet, we can apply a filter programmatically
+
+###**Steps to apply a filter:**
+1. Drag and drop "apply filter" to the Javascript
+```
+try {
+  // Apply categorical filter (Worksheet)
+
+  // snippet selects the worksheet "SaleMap" and applies a categorical filter on "Region"
+
+  // For more information, see
+  // https://help.tableau.com/current/api/embedding_api/en-us/docs/embedding_api_filter.html
+
+  // Apply the filter on Region to the "SaleMap" worksheet
+  const filterName = await worksheet.applyFilterAsync(
+    'Region', // the name of the filter
+    ['East'], // array of values
+    FilterUpdateType.Replace // other options Add, Remove or All
+  );
+} catch (e) {
+  console.error(e.toString());
+}
+```
+2. Replace “Region” with “State” and “East” with “Texas” 
+```
+  const filterName = await worksheet.applyFilterAsync(
+    'State', // the name of the filter
+    ['Texas'], // array of values
+    FilterUpdateType.Replace // other options Add, Remove or All
+  );
+  ```
+3. Click "Run" and notice how the map re-renderes with a focus on Texas
+ ![Apply Filter Steps 2 and 3](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/applyfiltersteps.png)
+
+#:zap: Extra Challenges :zap:
+[ :arrow_upper_left: Go back to Part II Key Objectives](#part-ii-interactions "marks")
+
+####Have you already made it through the first two challenges? See if you can complete these on your own.
+>[!help] **Challenge 1: Clear the filter "state"**
+
+>[+hint] **Expand for the solution to clearing a filter**
+> 
+1. Drag and drop "Clear specified filter"  
+> ![Clear Marks](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/clearmarksjavascript.png)
+2. Replace `Region` with `State`
+3. Click "Run"
+4. The map should return to all of the United States    
+####:bulb: Note: Each **try block** executes its code sequentially, one after the other.
+
+>[!help] **Challenge 2: Filter "Order Date" by 1/1/2023 - 3/28/2023**
+
+>[+hint] **Expand for the solution to filter the "Order Date"**
+> 
+###:bulb: Did you notice that the result of running the "Get list of filters" function, is a list of **filter objects** that included properties **_fieldName** and **_filterType** and that the only **_fieldName** that had a type **range** was **Order Date**? 
+> ![Filter Object](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/applyrangefilterobject.png)   
+####To filter a **range** we first need to make sure that the **_filterType** = **range** 
+1. Drag and drop "Apply range filter"  
+2. Replace within the filterOptions **min** with `new Date(Date.UTC(2023, 0, 1))` and **max** with `new Date(Date.UTC(2023, 2, 28))`
+> ![Date Range](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/daterange.png)
+3. Click "Run" to see the Order Date change in the top right of the screen    
+> ![Date Range](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/daterangechanged.png)
+####:bulb: Note: Months are in an array and January is in position 0
+===
+
+# **Part III: Connected Apps**
+![part 3](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/part3.png)
+
+#### So far, we have been working with a visualization hosted on Tableau Public. However, in order to embed data visualizations that should not be accessible to the entire world we need to learn how to setup **Authentication** (often called SSO) so that users are granted access
+
+###**Setup Connected Apps:**
+1. Switch to Tableau URL
+2. Add the provided Tableau URL
+**Tableau URL**: ++https://prod-useast-b.online.tableau.com/t/embeddingplaybook/views/libraries_volumes/LibrariesandVolumes++
+3. Click "**Run**" but notice how the viz is inaccessible, we need to configure authentication next!
+ ![Apply Filter Steps 2 and 3](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/applyfiltersteps.png)
+4. 
+
+## **Code**:
+```
+
+
+```
+####:bulb: **Note**: Notice the 3 "try" blocks in this code indicating 3 code blocks are used in succession
+
+===
+
+# Thank You!
+
+![thanks](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/thanks.png)
+
+>[!alert] Please don't forget to fill out your **survey** 😃!
+
+===
+# Extra Material
+1. [Parameter Interactions](#get-parameters "parameters")
+2. [Marks Interactions](#get-marks "marks")
+===
+#**Get Parameters**
+[ :arrow_upper_left: Go back to Extra Material](#extra-material)
+>[+hint] **What is a parameter?**
+> 
+You can use parameters to add interactivity and flexibility to a view. A parameter is a Tableau workbook variable that can replace a constant value in a calculation, filter, or reference line. knowledge[Documentation Here](https://help.tableau.com/current/api/embedding_api/en-us/docs/embedding_api_parameters.html)
+
+![get parameters](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/get_parameters.png)
+
+####First we need to get the available parameters within the workbook 
+### **Steps to get parameters:**
+1. Expand the "Add Interactions" section
+2. Expand the "Workbook" section
+3. Drag and drop "Get list of parameters" to the Javascript
+```
+try {
+  // getParametersAsync (Workbook)
+
+  // For more information, see
+  // https://help.tableau.com/current/api/embedding_api/en-us/docs/embedding_api_parameters.html
+
+  const parameters = await viz.workbook.getParametersAsync();
+  console.log('Available workbook parameters and their current values:');
+  parameters.forEach((p) => {
+    console.log(p.name, p.currentValue.value);
+  });
+} catch (e) {
+  console.error(e.toString());
+}
+```
+4. Click the "run" button
+![Get Parameters steps 1-4](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/getparameterssteps.png)
+5. Expand the console to see all of the available workbook parameters and their current values. Make note of "Label to display" and the current value is "none"   
+![Get Parameters Console Results](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/getparametersconsole.png)
+
+
+===
+#**Change Parameter Values**
+[ :arrow_upper_left: Go back to Extra Material](#extra-material)
+
+![change parameters](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/change_parameter.png)
+
+#### Now that we know the available parameters we can change a parameter value
+
+### **Steps to change a parameter value**:
+1. Drag and drop "Change parameter values" to the Javascript    
+  The **parameter** we are changing is "Label to display"   
+  The **value** we want to display is "City"
+```
+try {
+  // changeParameterValueAsync (Workbook)
+
+  // For more information, see
+  // https://help.tableau.com/current/api/embedding_api/en-us/docs/embedding_api_parameters.html
+
+  // set the label to display parameter value
+  const paramName = 'City'; // possible values: City, Postal and None (case sensitive)
+  const updatedParam = await viz.workbook.changeParameterValueAsync('Label to display', paramName);
+  console.log(`Updated parameter: ${updatedParam.name}, ${updatedParam.currentValue.value}`);
+} catch (e) {
+  console.error(e.toString());
+}
+```
+2. Click "run"
+3. Select "preview" to see a larger view of the map, now displaying **Cities**
+![Change Parameter Values](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/changeparamvaluessteps.png)
+===
+# **Get Marks**
+[ :arrow_upper_left: Go back to Extra Material](#extra-material)
+
+![select marks](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/select_marks.png)
+
+#### This next section demonstrates how to select individual marks or visual representations of data in a visualization. Examples of data marks include cities on a map, bars on a bar chart or coordinates on a scatter plot.
+
+###**Steps to Select Marks:**
+1. Drag and drop "**Select marks**" to the Javascript code pane
+2. Click "**Run**" and notice how the map highlights the selected data marks
+ ![Apply Filter Steps 2 and 3](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/applyfiltersteps.png)
+
+## **Code**:
+```
+  // *** Insert your code below! ***
+
+try {
+  // selectMarksByValueAsync (Worksheet)
+
+  // For more information, see
+  // https://help.tableau.com/current/api/embedding_api/en-us/docs/embedding_api_select_marks.html
+
+  const selections = [
+    {
+      fieldName: 'State',
+      value: ['Texas', 'Washington', 'California'],
+    },
+  ];
+
+  await worksheet.selectMarksByValueAsync(selections, SelectionUpdateType.Replace);
+} catch (e) {
+  console.error(e.toString());
+}
+```
+
+===
+#**Get Selected Marks**
+[ :arrow_upper_left: Go back to Extra Material](#extra-material)
+
+![get selected marks](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/get_marks.png)
+
+#### After selecting marks, you can request information about said marks to drive further interactivity such as displaying the information to end users or sending that data to a separate process such as sending a Slack message to other users containing this information.
+
+###**Steps to Get Selected Marks:**
+1. Drag and drop "**Get selected marks**" to the Javascript code pane below the previous code block called "**Select marks**"
+2. Click "**Run**" and notice how the console is logging data about marks within the Texas, Washington and California
+ ![Apply Filter Steps 2 and 3](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/applyfiltersteps.png)
+
+## **Code**:
+```
+// *** Insert your code below! ***
+
+try {
+  // selectMarksByValueAsync (Worksheet)
+
+  // For more information, see
+  // https://help.tableau.com/current/api/embedding_api/en-us/docs/embedding_api_select_marks.html
+
+  const selections = [
+    {
+      fieldName: 'State',
+      value: ['Texas', 'Washington', 'California'],
+    },
+  ];
+
+  await worksheet.selectMarksByValueAsync(selections, SelectionUpdateType.Replace);
+} catch (e) {
+  console.error(e.toString());
+}
+
+try {
+  // Get data from the selected marks (Worksheet)
+
+  // To use:
+  // 1. Add 'Select marks' interaction.
+  // 2. Add 'Get selected marks' interaction (after 'Select marks').
+  // 4. Click Run.
+
+  // For more information, see
+  // https://help.tableau.com/current/api/embedding_api/en-us/docs/embedding_api_select_marks.html
+
+  const selectedMarks = await worksheet.getSelectedMarksAsync();
+
+  // Get the first DataTable for our selected marks (usually there is just one)
+  const marksDataTable = selectedMarks.data[0];
+
+  // Map the data into a format for display, etc.
+  console.log(marksDataTable);
+  console.log(
+    `Data acquired for selected marks. \nName: "${marksDataTable.name}" \nRows of data: ${marksDataTable.totalRowCount}`
+  );
+} catch (e) {
+  console.error(e.toString());
+}
+```
+####:bulb: **Note**: Notice the 2 "try" blocks in this code indicating 2 code blocks used in succession
+
+===
+
+#**Clear Selected Marks**
+[ :arrow_upper_left: Go back to Extra Material](#extra-material)
+
+![clear marks](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/clear_marks.png)
+
+#### After selecting marks and obtaining their data, we can now clear those selections to reset the view for future user interactions.
+
+###**Steps to Clear Selected Marks:**
+1. Drag and drop "**Clear selected marks**" to the Javascript code pane below the 2 previous code blocks called "**Get selected marks**"
+2. Click "**Run**" and notice how the map has been reset to its original state
+ ![Apply Filter Steps 2 and 3](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/applyfiltersteps.png)
+
+## **Code**:
+```
+// *** Insert your code below! ***
+
+try {
+  // selectMarksByValueAsync (Worksheet)
+
+  // For more information, see
+  // https://help.tableau.com/current/api/embedding_api/en-us/docs/embedding_api_select_marks.html
+
+  const selections = [
+    {
+      fieldName: 'State',
+      value: ['Texas', 'Washington', 'California'],
+    },
+  ];
+
+  await worksheet.selectMarksByValueAsync(selections, SelectionUpdateType.Replace);
+} catch (e) {
+  console.error(e.toString());
+}
+
+try {
+  // Get data from the selected marks (Worksheet)
+
+  // To use:
+  // 1. Add 'Select marks' interaction.
+  // 2. Add 'Get selected marks' interaction (after 'Select marks').
+  // 4. Click Run.
+
+  // For more information, see
+  // https://help.tableau.com/current/api/embedding_api/en-us/docs/embedding_api_select_marks.html
+
+  const selectedMarks = await worksheet.getSelectedMarksAsync();
+
+  // Get the first DataTable for our selected marks (usually there is just one)
+  const marksDataTable = selectedMarks.data[0];
+
+  // Map the data into a format for display, etc.
+  console.log(marksDataTable);
+  console.log(
+    `Data acquired for selected marks. \nName: "${marksDataTable.name}" \nRows of data: ${marksDataTable.totalRowCount}`
+  );
+} catch (e) {
+  console.error(e.toString());
+}
+
+try {
+  // Clear selected marks (Worksheet)
+
+  // To use:
+  // 1. Add 'Select marks' interaction.
+  // 2. Add 'Get selected marks' interaction (after 'Select marks').
+  // 3. Add 'Clear selected marks' interaction.
+  // 4. Click Run.
+
+  // For more information, see
+  // https://help.tableau.com/current/api/embedding_api/en-us/docs/embedding_api_select_marks.html
+
+  await worksheet.clearSelectedMarksAsync();
+  console.log('Your marks selection has been cleared!');
+} catch (e) {
+  console.error(e.toString());
+}
+
+```
+####:bulb: **Note**: Notice the 3 "try" blocks in this code indicating 3 code blocks are used in succession
+
