@@ -239,35 +239,181 @@ try {
 ===
 
 # **Part III: Connected Apps**
+
 ![part 3](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/part3.png)
 
 #### So far, we have been working with a visualization hosted on Tableau Public. However, in order to embed data visualizations that should not be accessible to the entire world we need to learn how to setup **Authentication** (often called SSO) so that users are granted access
 
-###**Setup Connected Apps:**
+###**Embedding from Tableau Cloud**
 1. Switch to Tableau URL
+
+![switch to tableau url](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/connected_apps/connected_apps_12.png)
 2. Add the provided Tableau URL
+
 **Tableau URL**: ++https://prod-useast-b.online.tableau.com/t/embeddingplaybook/views/libraries_volumes/LibrariesandVolumes++
 3. Click "**Run**" but notice how the viz is inaccessible, we need to configure authentication next!
- ![Apply Filter Steps 2 and 3](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/applyfiltersteps.png)
-4. 
 
-## **Code**:
+![switch to tableau url](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/connected_apps/connected_apps_11.png)
+
+####:bulb: **Note**: Notice that you still do not have access to the viz
+
+##:book: **Code**:
+```html
+<tableau-viz
+  src="https://prod-useast-b.online.tableau.com/t/embeddingplaybook/views/libraries_volumes/LibrariesandVolumes"
+  device="desktop"
+  hide-tabs
+  toolbar="bottom"
+>
+</tableau-viz>
 ```
+===
+### **Configure the Connected App**
+1. Provide the following Connected App variables to the playground:
 
+**Client ID**: ++f48393c6-4549-48c8-8257-e5355b25a073++
 
+**Secret ID**: ++55545d76-6b29-43d5-be17-c1d5c575b80b++
+
+**Secret Value**: ++t1jqE7dPenNXxB3+a/B8G1AWT3s5CBoy13wmI8kuL/o=++
+
+**Tableau User ID**: ++embed@thebest.com++
+
+>[+hint] **Backup Connected App variables**
+>
+>**Client ID**: ++f48393c6-4549-48c8-8257-e5355b25a073++
+>
+>**Secret ID**: ++94a2c7f6-f525-430e-8d71-6f3c09ba3ea8++
+>
+>**Secret Value**: ++k8Byo/VDx1+yx2FIiNAEgcuL22rdjuv57fKIoex9pDw=++
+>
+>**Tableau User ID**: ++embed@thebest.com++
+####:bulb: Note: Use these variables instead of the first set. Both configurations should work as each Connected App can create up to **two unique secrets**.
+
+2. Click Run
+
+![switch to tableau url](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/connected_apps/connected_apps_10.png)
+
+####:bulb: **Note**: Data is not yet presented because the data is secured via **Row-Level Security (RLS)**
+
+####:book: **Code**: On the frontend, the web component will provide a **JWT** or token to the application via an attribute called `token`. **JWTs** are only accepted when created via a valid **Connected App**:
+
+```html
+<tableau-viz
+  src="https://prod-useast-b.online.tableau.com/t/embeddingplaybook/views/libraries_volumes/LibrariesandVolumes"
+  device="desktop"
+  hide-tabs
+  toolbar="bottom"
+  token='t1jqE7dPenNXxB3+a/B8G1cuL22rdjuv57fKIoex9pDw='
+>
+</tableau-viz>
 ```
-####:bulb: **Note**: Notice the 3 "try" blocks in this code indicating 3 code blocks are used in succession
+####:bulb: **Note**: Only a single token is needed to establish a session on the browser, allowing users to securely interact with the content they have permissions to access on their **Tableau site**.
 
 ===
 
-# Thank You!
+### **User Attribute Functions for Row-Level Security**
+1. Click on "**+ Add Attribute**"
+
+2. Add the following Attribute names and values:
+
+**Attribute Name**: ++Region++
+
+**Attribute Value(s)**: ++Asia,Oceania++
+
+3. Click "**Run**"
+
+![attribute name and value](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/connected_apps/connected_apps_9.png)
+
+####:tada: Now that data can be viewed, you can enjoy the viz in full view by clicking on "**Preview**"
+
+![click on preview](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/connected_apps/connected_apps_8.png)
+
+####:book: **Code**: Nothing changes on the frontend code (`HTML` or `JavaScript`)
+
+# **New Attribute Value**
+
+1. Try adding a new **Attribute** value, replace the current value with this:
+
+**New Attribute Value(s)**: ++Asia,Oceania,Middle East,Africa++
+
+2. Click "**Run**"
+
+![new attribute value](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/connected_apps/connected_apps_7.png)
+
+===
+### **Embedded Web Authoring**
+
+1. Change "**Embed Type**" to "**Authoring Mode**"
+
+2. Click "**Run**"
+
+![switch embed types](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/connected_apps/connected_apps_6.png)
+
+### :tada: **Embedded Web Authoring Mode Engaged!**
+
+![embedded web authoring mode](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/connected_apps/connected_apps_5.png)
+
+####:book: **Code**: this uses a different **Tableau Web Component** called `tableau-authoring-viz` :
+
+```html
+<tableau-authoring-viz
+  src="https://prod-useast-b.online.tableau.com/t/embeddingplaybook/views/libraries_volumes/LibrariesandVolumes"
+  token='t1jqE7dPenNXxB3+a/B8G1cuL22rdjuv57fKIoex9pDw='
+>
+</tableau-authoring-viz>
+```
+####:bulb: **Note**: to learn more about configuring the `tableau-authoring-viz` **Web Component**, go here: [Embedding API docs](https://help.tableau.com/current/api/embedding_api/en-us/docs/embedding_api_configure.html#example-tableau-authoring-viz-component-configuration)
+
+3. Try adding a third **Attribute** value, replace the current value with this:
+
+**New Attribute Value(s)**: ++Asia,Oceania,Middle East,Africa,Europe,North America,Latin America++
+
+4. Click "**Run**"
+
+![third attribute value](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/connected_apps/connected_apps_4.png)
+
+#### :tada: **Now you have access to the full data set!**
+
+===
+
+### **Connected Apps _"Under the Hood"_**
+
+1. Start a new **Sheet**
+
+2. Edit the `calculated field` called **Region UAF**
+
+![new sheet](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/connected_apps/connected_apps_3.png)
+
+####:bulb: **Note**: The calculated field relies on Tableau `user functions`, to learn more go here: [Tableau Help docs](https://help.tableau.com/current/pro/desktop/en-us/functions_functions_user.htm#userattributeincludes)
+
+####:warning: You can't do this on your lab VM, but you can try it out on your own Tableau site since this environment prevents lab users from modifying the workbook and data source
+
+![new sheet](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/connected_apps/connected_apps_2.png)
+
+####:bulb: **Note**: the main takeaway is that you need to be able to configure the data source filters on the `Tableau Cloud` side, not `Tableau Desktop`.
+
+===
+
+## **Give Us Your Feedback!**
+
+>[!help] Please don't forget to fill out your **survey** 😃!
+
+![thanks](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/feedback.png)
+
+===
+
+## **Thank You!**
+
+>[!knowledge] if you want a **copy of these files** go here: [cloud storage](bit.ly/HOT-1810)
 
 ![thanks](https://raw.githubusercontent.com/Tab-SE/tc24_embed_best/main/Images/TC24_embed_best/thanks.png)
 
->[!alert] Please don't forget to fill out your **survey** 😃!
-
 ===
-# Extra Material
+# **Extra Material**
+
+Feel free to complete this additional interactions to get more experience writing interactions with Tableau via `JavaScript`:
+
 1. [Parameter Interactions](#get-parameters "parameters")
 2. [Marks Interactions](#get-marks "marks")
 ===
